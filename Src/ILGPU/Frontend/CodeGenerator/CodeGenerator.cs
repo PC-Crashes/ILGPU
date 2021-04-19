@@ -79,7 +79,6 @@ namespace ILGPU.Frontend
         private void SetupVariables()
         {
             var builder = EntryBlock.Builder;
-            LambdaArgumentOffset = Method.IsNotCapturingLambda() ? 1 : 0;
 
             // Check for SSA variables
             for (int i = 0, e = DisassembledMethod.Count; i < e; ++i)
@@ -101,7 +100,7 @@ namespace ILGPU.Frontend
             }
 
             // Initialize params
-            if (!Method.IsStatic && !Method.IsNotCapturingLambda())
+            if (!Method.IsStatic)
             {
                 var declaringType = builder.CreateType(Method.DeclaringType);
                 declaringType = builder.CreatePointerType(

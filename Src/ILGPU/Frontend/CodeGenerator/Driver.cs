@@ -41,6 +41,7 @@ namespace ILGPU.Frontend
                     MakeTrap();
                     return true;
                 case ILInstructionType.LdToken:
+                case ILInstructionType.LdFn:
                     MakeLoadToken(instruction.Argument);
                     return true;
 
